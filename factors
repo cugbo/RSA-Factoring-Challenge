@@ -1,0 +1,35 @@
+#!/usr/bin/python3
+
+"""
+Module containing factorizing function
+"""
+from sys import argv
+
+
+def factorize(value):
+    """factorizes value into smaller numbers"""
+
+    i = 2
+
+    if value < 2:
+        return
+
+    while value % i:
+        i += 1
+
+    print("{:.0f} = {:.0f} * {:.0f}".format(value, value / i, i))
+
+
+if len(argv) != 2:
+    exit(0)
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            value = int(line.split('\n')[0])
+            factorize(value)
+            line = file.readline()
+except IndexError:
+    pass
